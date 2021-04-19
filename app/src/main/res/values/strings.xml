@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Sample</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">Login</string>
+    <string name="user_name_hint">User name…</string>
+    <string name="user_password_hint">Password…</string>
+    <string name="post_title">Some post title.</string>
+    <string name="post_content_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus assumenda distinctio dolore dolorem, explicabo iusto minima nihil nisi, non numquam placeat quibusdam rem, tempore. Error iusto laudantium officiis similique tempore.</string>
+</resources>
