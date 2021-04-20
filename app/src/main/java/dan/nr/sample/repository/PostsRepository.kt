@@ -6,10 +6,9 @@ import kotlinx.coroutines.flow.Flow
 
 class PostsRepository(private val dao: PostDao) : BaseRepository()
 {
-    private val TAG = "!!!"
-    suspend fun addPost(post: Post) = dao.addPost(post)
     suspend fun removeAllPosts() = dao.removeAllPosts()
 
-    fun getPostsFlow(): Flow<List<Post>> = dao.getPosts()
+    suspend fun updatePost(isLiked: Boolean, id: Long) = dao.updatePost(isLiked , id )
 
+    fun getPosts(): Flow<List<Post>> = dao.getPosts()
 }

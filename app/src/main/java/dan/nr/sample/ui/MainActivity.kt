@@ -1,8 +1,9 @@
 package dan.nr.sample.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import dan.nr.sample.R
+
 
 class MainActivity : AppCompatActivity()
 {

@@ -10,6 +10,9 @@ import androidx.datastore.preferences.createDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
+/**
+ * Save user info to data store.
+ */
 class UserPreferences(context: Context)
 {
     private val applicationContext = context.applicationContext

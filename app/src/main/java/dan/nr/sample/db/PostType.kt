@@ -1,4 +1,4 @@
-package dan.nr.sample.model
+package dan.nr.sample.db
 
 enum class PostType(val value: Int)
 {

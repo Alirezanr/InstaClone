@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import dan.nr.sample.R
 import dan.nr.sample.databinding.FragmentLoginBinding
@@ -19,6 +18,11 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding, LoginRe
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
+        initializeUi()
+    }
+
+    private fun initializeUi()
+    {
         binding.btnEnter.isViewEnable(false)
 
         binding.edtUserName.addTextChangedListener {
@@ -31,18 +35,15 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding, LoginRe
         }
 
         binding.btnEnter.setOnClickListener {
-            lifecycleScope.launchWhenStarted {
-                viewModel.saveUserInfo(binding.edtUserName.text.toString().trim(),
-                                       binding.edtPassword.text.toString().trim())
-                findNavController().navigate(R.id.action_loginFragment_to_postsFragment)
-            }
+            viewModel.saveUserInfo(binding.edtUserName.text.toString().trim(),
+                                   binding.edtPassword.text.toString().trim())
+            findNavController().navigate(R.id.action_loginFragment_to_postsFragment)
         }
-
     }
 
-    fun validateInputs(): Boolean = InputValidator.validateInputs(binding.edtUserName.text.toString()
+    private fun validateInputs(): Boolean = InputValidator.validateInputs(binding.edtUserName.text.toString()
                                                                           .trim(),
-                                                                  binding.edtPassword.text.toString()
+                                                                          binding.edtPassword.text.toString()
                                                                           .trim())
 
     override fun getViewModel(): Class<LoginViewModel> = LoginViewModel::class.java

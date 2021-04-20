@@ -2,8 +2,8 @@ package dan.nr.sample.util
 
 object InputValidator
 {
-    fun validateInputs(name:String,password:String): Boolean
+    fun validateInputs(arg1:String, arg2:String): Boolean
     {
-        return (name.isNotEmpty() && password.isNotEmpty())
+        return (arg1.isNotEmpty() && arg2.isNotEmpty())
     }
 }

@@ -2,12 +2,13 @@ package dan.nr.sample.ui.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import dan.nr.sample.repository.AddPostRepository
 import dan.nr.sample.repository.BaseRepository
 import dan.nr.sample.repository.LoginRepository
 import dan.nr.sample.repository.PostsRepository
+import dan.nr.sample.ui.add_post.AddPostViewModel
 import dan.nr.sample.ui.login.LoginViewModel
 import dan.nr.sample.ui.posts.PostsViewModel
-import java.lang.IllegalArgumentException
 
 class ViewModelFactory(private val repository: BaseRepository) : ViewModelProvider.NewInstanceFactory()
 {
@@ -23,7 +24,11 @@ class ViewModelFactory(private val repository: BaseRepository) : ViewModelProvid
             {
                 PostsViewModel(repository = repository as PostsRepository) as T
             }
-            else                                                   ->
+            modelClass.isAssignableFrom(AddPostViewModel::class.java) ->
+            {
+                AddPostViewModel(repository = repository as AddPostRepository) as T
+            }
+            else ->
             {
                 throw IllegalArgumentException("ViewModel class not found")
             }

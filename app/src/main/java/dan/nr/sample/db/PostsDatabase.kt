@@ -11,7 +11,7 @@ import androidx.room.TypeConverters
 abstract class PostsDatabase : RoomDatabase()
 {
 
-    abstract fun getSpendDao(): PostDao
+    abstract fun getPostsDao(): PostDao
 
     companion object
     {

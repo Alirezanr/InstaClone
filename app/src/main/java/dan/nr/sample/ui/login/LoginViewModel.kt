@@ -1,12 +1,16 @@
 package dan.nr.sample.ui.login
 
+import androidx.lifecycle.viewModelScope
 import dan.nr.sample.repository.LoginRepository
 import dan.nr.sample.ui.base.BaseViewModel
+import kotlinx.coroutines.launch
 
 class LoginViewModel(private val repository: LoginRepository): BaseViewModel(repository)
 {
-    suspend fun saveUserInfo(username:String,password:String)
+     fun saveUserInfo(username:String,password:String)
     {
-        repository.saveUserInfo(username,password)
+        viewModelScope.launch {
+            repository.saveUserInfo(username,password)
+        }
     }
 }

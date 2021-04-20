@@ -3,6 +3,10 @@ package dan.nr.sample.db
 import androidx.room.TypeConverter
 import java.util.*
 
+/**
+ * Helper class.
+ * Converts Date to timestamp and timestamp to Date
+ */
 class DateConverter {
 
     @TypeConverter

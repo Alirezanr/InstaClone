@@ -1,6 +1,5 @@
 package dan.nr.sample.ui.posts
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -14,27 +13,39 @@ import kotlinx.coroutines.withContext
 
 class PostsViewModel(private val repository: PostsRepository) : BaseViewModel(repository)
 {
-    private val TAG = "!!!"
     private val _posts = MutableLiveData<List<Post>>()
     val posts: LiveData<List<Post>>
         get() = _posts
 
-    suspend fun addPost(post: Post) = repository.addPost(post)
+    /**
+     * Update post's like status
+     */
+    fun updatePost(isLiked: Boolean, id: Long)
+    {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                repository.updatePost(isLiked, id)
+            }
+        }
+    }
 
-    suspend fun removeAllPosts() = repository.removeAllPosts()
+    fun removeAllPosts()
+    {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                repository.removeAllPosts()
+            }
+        }
+    }
 
     fun getPosts()
     {
-        Log.i(TAG, "getPosts()j")
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                repository.getPostsFlow().collect {
+                repository.getPosts().collect {
                     withContext(Dispatchers.Main)
                     {
-                        Log.d(TAG, "setting value on = " + Thread.currentThread().name)
-
                         _posts.value = it
-
                     }
                 }
 

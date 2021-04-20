@@ -1,8 +1,11 @@
 package dan.nr.sample.db
 
 import androidx.room.TypeConverter
-import dan.nr.sample.model.PostType
 
+/**
+ * Helper class.
+ * Converts PostType to int and int to PostType
+ */
 class PostTypeConverter
 {
 
